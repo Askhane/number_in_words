@@ -1,63 +1,36 @@
 package org.example;
 
-import java.util.Map;
-
-import static java.util.Map.entry;
-
 public class NumbersInWords {
 
-    private static final String ET = "et-";
-
-    private static final Map<Integer, String> primitiveNumbersToWords = Map.ofEntries(
-            entry(0, "zero"),
-            entry(1, "un"),
-            entry(2, "deux"),
-            entry(3, "trois"),
-            entry(4, "quatre"),
-            entry(5, "cinq"),
-            entry(6, "six"),
-            entry(7, "sept"),
-            entry(8, "huit"),
-            entry(9, "neuf"),
-            entry(10, "dix"),
-            entry(11, "onze"),
-            entry(12, "douze"),
-            entry(13, "treize"),
-            entry(14, "quatorze"),
-            entry(15, "quinze"),
-            entry(16, "seize"),
-            entry(20, "vingt"),
-            entry(30, "trente"),
-            entry(40, "quarante"),
-            entry(50, "cinquante"),
-            entry(60, "soixante")
-    );
-
-    private static final int DIX = 10;
+    private static final int TEN = 10;
 
     static String convertToWords(int number) {
-        String words = primitiveNumbersToWords.get(number);
-        if (words == null) {
-            words = compositeNumbersToWords(number);
-        }
-        return words;
+        return getNumberWords(number).numberName();
     }
 
-    private static String compositeNumbersToWords(int number) {
-        int units = number % DIX;
+    private static NumberName getNumberWords(int number) {
+        NumberName name = PrimitiveNumberName.get(number);
+        if (name == null) {
+            name = compositeNumber(number);
+        }
+        return name;
+    }
+
+    private static NumberName compositeNumber(int number) {
+        int units = number % TEN;
         int tens = number - units;
 
         if (tens == 70) {
             tens = 60;
-            units = DIX + units;
+            units = TEN + units;
         }
 
-        String unitsAsWords = convertToWords(units);
+        NumberName unitsAsWords = getNumberWords(units);
+        PrimitiveNumberName tensAsWords = PrimitiveNumberName.get(tens);
         if(units%10 == 1) {
-            unitsAsWords = ET + unitsAsWords;
+            return new CompositeNumberEt(tensAsWords, unitsAsWords);
         }
-        String tensAsWords = primitiveNumbersToWords.get(tens);
 
-        return String.format("%s-%s",tensAsWords, unitsAsWords);
+        return new CompositeNumber(tensAsWords, unitsAsWords);
     }
 }
