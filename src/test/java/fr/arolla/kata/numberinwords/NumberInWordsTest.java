@@ -37,4 +37,14 @@ public class NumberInWordsTest {
         assertThat(Number.inWords(namedNumber)).isEqualTo(numberName);
     }
 
+    @CsvSource({
+            "17,dix-sept",
+            "18,dix-huit",
+            "19,dix-neuf",
+    })
+    @ParameterizedTest
+    void shouldReturnCompoundNameForNumbersFrom17to19(int number, String compoundName) {
+        assertThat(Number.inWords(number)).isEqualTo(compoundName);
+    }
+
 }
