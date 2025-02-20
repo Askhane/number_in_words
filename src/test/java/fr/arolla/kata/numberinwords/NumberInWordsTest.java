@@ -1,5 +1,6 @@
 package fr.arolla.kata.numberinwords;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -33,7 +34,7 @@ public class NumberInWordsTest {
             "16,seize",
     })
     @ParameterizedTest
-    void shouldReturnNumberNameForNamedNumbers(int namedNumber, String numberName) {
+    void shouldReturnNumberNameForNamedNumbersFrom10To16(int namedNumber, String numberName) {
         assertThat(Number.inWords(namedNumber)).isEqualTo(numberName);
     }
 
@@ -45,6 +46,11 @@ public class NumberInWordsTest {
     @ParameterizedTest
     void shouldReturnCompoundNameForNumbersFrom17to19(int number, String compoundName) {
         assertThat(Number.inWords(number)).isEqualTo(compoundName);
+    }
+
+    @Test
+    void shouldReturnNumberNameForTens() {
+        assertThat(Number.inWords(20)).isEqualTo("vingt");
     }
 
 }
