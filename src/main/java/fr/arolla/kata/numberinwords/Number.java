@@ -5,7 +5,15 @@ public class Number {
         return switch (number) {
             case 0 -> "zero";
             case 1 -> "un";
-            default -> "deux";
+            case 2 -> "deux";
+            case 3 -> "trois";
+            case 4 -> "quatre";
+            case 5 -> "cinq";
+            case 6 -> "six";
+            case 7 -> "sept";
+            case 8 -> "huit";
+            case 9 -> "neuf";
+            default -> null;
         };
     }
 }
