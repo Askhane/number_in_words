@@ -1,26 +1,30 @@
 package fr.arolla.kata.numberinwords;
 
-public class Number {
+public record Number(int value) {
     public static String inWords(int number) {
-        if (number >= 17) {
-            return compoundNumberInWords(number);
-        }
-        return namedNumberInWords(number);
+        return new Number(number).inWords();
     }
 
-    private static String compoundNumberInWords(int number) {
-        int unitDigit = getUnitDigit(number);
-        String unitName = namedNumberInWords(unitDigit);
-        String tensName = namedNumberInWords(10);
+    public String inWords() {
+        if (value >= 17) {
+            return compoundNumberInWords();
+        }
+        return namedNumberInWords();
+    }
+
+    private String compoundNumberInWords() {
+        int unitDigit = getUnitDigit();
+        String unitName = new Number(unitDigit).inWords();
+        String tensName = new Number(10).inWords();
         return tensName + "-" + unitName;
     }
 
-    private static int getUnitDigit(int number) {
-        return number % 10;
+    private int getUnitDigit() {
+        return value % 10;
     }
 
-    private static String namedNumberInWords(int number) {
-        return switch (number) {
+    private String namedNumberInWords() {
+        return switch (value) {
             case 0 -> "zero";
             case 1 -> "un";
             case 2 -> "deux";
