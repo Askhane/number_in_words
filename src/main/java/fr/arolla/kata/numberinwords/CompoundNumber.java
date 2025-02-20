@@ -1,18 +1,10 @@
 package fr.arolla.kata.numberinwords;
 
-public record CompoundNumber(int value) implements Number {
+public record CompoundNumber(Number leftNumber, Number rightNumber) implements Number {
 
     @Override
     public String inWords() {
-        int unitDigit = getUnitDigit();
-        String unitName = Number.inWords(unitDigit);
-        String tensName = Number.inWords(10);
-        return tensName + "-" + unitName;
-    }
-
-
-    private int getUnitDigit() {
-        return value % 10;
+        return leftNumber.inWords() + "-" + rightNumber.inWords();
     }
 
 }
