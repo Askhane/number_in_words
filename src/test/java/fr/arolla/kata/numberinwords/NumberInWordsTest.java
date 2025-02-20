@@ -11,4 +11,8 @@ public class NumberInWordsTest {
         assertThat(Number.inWords(0)).isEqualTo("zero");
     }
 
+    @Test
+    void shouldWriteUnFor1() {
+        assertThat(Number.inWords(1)).isEqualTo("un");
+    }
 }
