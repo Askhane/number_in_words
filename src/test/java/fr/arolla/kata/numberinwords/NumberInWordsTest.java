@@ -1,18 +1,20 @@
 package fr.arolla.kata.numberinwords;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class NumberInWordsTest {
 
-    @Test
-    public void shouldWriteZeroFor0() {
-        assertThat(Number.inWords(0)).isEqualTo("zero");
+    @CsvSource({
+            "0,zero",
+            "1,un",
+            "2,deux"})
+    @ParameterizedTest
+    void shouldReturnDigitNameForUnits(int unit, String digitName) {
+        assertThat(Number.inWords(unit)).isEqualTo(digitName);
     }
 
-    @Test
-    void shouldWriteUnFor1() {
-        assertThat(Number.inWords(1)).isEqualTo("un");
-    }
+
 }
