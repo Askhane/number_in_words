@@ -19,9 +19,22 @@ public class NumberInWordsTest {
             "8,huit",
             "9,neuf"})
     @ParameterizedTest
-    void shouldReturnDigitNameForUnits(int unit, String digitName) {
-        assertThat(Number.inWords(unit)).isEqualTo(digitName);
+    void shouldReturnDigitNameForOneDigitNumbers(int oneDigitNumber, String digitName) {
+        assertThat(Number.inWords(oneDigitNumber)).isEqualTo(digitName);
     }
 
+    @CsvSource({
+            "10,dix",
+            "11,onze",
+            "12,douze",
+            "13,treize",
+            "14,quatorze",
+            "15,quinze",
+            "16,seize",
+    })
+    @ParameterizedTest
+    void shouldReturnNumberNameForNamedNumbers(int namedNumber, String numberName) {
+        assertThat(Number.inWords(namedNumber)).isEqualTo(numberName);
+    }
 
 }

@@ -13,6 +13,13 @@ public class Number {
             case 7 -> "sept";
             case 8 -> "huit";
             case 9 -> "neuf";
+            case 10 -> "dix";
+            case 11 -> "onze";
+            case 12 -> "douze";
+            case 13 -> "treize";
+            case 14 -> "quatorze";
+            case 15 -> "quinze";
+            case 16 -> "seize";
             default -> null;
         };
     }
