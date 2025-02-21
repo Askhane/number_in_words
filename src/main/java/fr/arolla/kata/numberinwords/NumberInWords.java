@@ -9,4 +9,5 @@ public interface NumberInWords {
 
     String inWords();
 
+    int value();
 }

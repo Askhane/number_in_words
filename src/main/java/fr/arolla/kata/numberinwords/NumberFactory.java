@@ -9,10 +9,10 @@ public class NumberFactory {
         return namedNumber;
     }
 
-    private static CompoundNamedNumber buildCompoundNumber(int number) {
-        int unitDigit = getUnitDigit(number);
-        int tens = number - unitDigit;
-        return new CompoundNamedNumber(NamedNumber.of(tens), NamedNumber.of(unitDigit));
+    private static CompoundNamedNumber buildCompoundNumber(int value) {
+        int unitDigit = getUnitDigit(value);
+        int tens = value - unitDigit;
+        return new CompoundNamedNumber(NamedNumber.of(tens), NamedNumber.of(unitDigit), value);
     }
 
     private static int getUnitDigit(int value) {

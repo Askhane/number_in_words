@@ -1,5 +1,6 @@
 package fr.arolla.kata.numberinwords;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -71,6 +72,11 @@ public class NumberInWordsTest {
     @ParameterizedTest
     void shouldReturnCompoundNameForNumbersWithNamedTens(int number, String compoundName) {
         assertThat(NumberInWords.of(number)).isEqualTo(compoundName);
+    }
+
+    @Test
+    void shouldReturnCompoundNameFor21() {
+        assertThat(NumberInWords.of(21)).isEqualTo("vingt-et-un");
     }
 
 }

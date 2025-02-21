@@ -2,7 +2,7 @@ package fr.arolla.kata.numberinwords;
 
 import java.util.Map;
 
-public record NamedNumber(String name) implements NumberInWords {
+public record NamedNumber(int value, String name) implements NumberInWords {
 
     private static final Map<Integer, NamedNumber> valueToNamedNumber = Map.ofEntries(
             entry(0, "zero"),
@@ -39,6 +39,6 @@ public record NamedNumber(String name) implements NumberInWords {
     }
 
     private static Map.Entry<Integer, NamedNumber> entry(int value, String name) {
-        return Map.entry(value, new NamedNumber(name));
+        return Map.entry(value, new NamedNumber(value, name));
     }
 }
