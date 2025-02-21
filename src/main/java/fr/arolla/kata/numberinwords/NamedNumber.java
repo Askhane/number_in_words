@@ -22,7 +22,8 @@ public record NamedNumber(String name) implements NumberInWords {
             entry(14, "quatorze"),
             entry(15, "quinze"),
             entry(16, "seize"),
-            entry(20, "vingt")
+            entry(20, "vingt"),
+            entry(30, "trente")
     );
 
     public static NamedNumber of(int value) {

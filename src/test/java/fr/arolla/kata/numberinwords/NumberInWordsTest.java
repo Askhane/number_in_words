@@ -47,9 +47,13 @@ public class NumberInWordsTest {
         assertThat(NumberInWords.of(number)).isEqualTo(compoundName);
     }
 
-    @Test
-    void shouldReturnNumberNameForTens() {
-        assertThat(NumberInWords.of(20)).isEqualTo("vingt");
+    @CsvSource({
+            "20,vingt",
+            "30,trente",
+    })
+    @ParameterizedTest
+    void shouldReturnNumberNameForSimpleTens(int number, String tensName) {
+        assertThat(NumberInWords.of(number)).isEqualTo(tensName);
     }
 
     @CsvSource({
