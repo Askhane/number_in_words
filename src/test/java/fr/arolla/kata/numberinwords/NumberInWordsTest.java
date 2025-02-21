@@ -50,9 +50,12 @@ public class NumberInWordsTest {
     @CsvSource({
             "20,vingt",
             "30,trente",
+            "40,quarante",
+            "50,cinquante",
+            "60,soixante",
     })
     @ParameterizedTest
-    void shouldReturnNumberNameForSimpleTens(int number, String tensName) {
+    void shouldReturnNumberNameForNamedTens(int number, String tensName) {
         assertThat(NumberInWords.of(number)).isEqualTo(tensName);
     }
 
@@ -60,9 +63,13 @@ public class NumberInWordsTest {
             "22,vingt-deux",
             "23,vingt-trois",
             "29,vingt-neuf",
+            "35,trente-cinq,",
+            "44,quarante-quatre",
+            "58,cinquante-huit",
+            "69,soixante-neuf"
     })
     @ParameterizedTest
-    void shouldReturnCompoundNameForNumbersForSimpleTensNumber(int number, String compoundName) {
+    void shouldReturnCompoundNameForNumbersWithNamedTens(int number, String compoundName) {
         assertThat(NumberInWords.of(number)).isEqualTo(compoundName);
     }
 

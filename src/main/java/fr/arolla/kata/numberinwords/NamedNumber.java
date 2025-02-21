@@ -23,7 +23,10 @@ public record NamedNumber(String name) implements NumberInWords {
             entry(15, "quinze"),
             entry(16, "seize"),
             entry(20, "vingt"),
-            entry(30, "trente")
+            entry(30, "trente"),
+            entry(40, "quarante"),
+            entry(50, "cinquante"),
+            entry(60, "soixante")
     );
 
     public static NamedNumber of(int value) {
