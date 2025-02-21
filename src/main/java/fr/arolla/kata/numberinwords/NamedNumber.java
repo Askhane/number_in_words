@@ -2,31 +2,39 @@ package fr.arolla.kata.numberinwords;
 
 import java.util.Map;
 
-public record NamedNumber(int value) implements NumberInWords {
+public record NamedNumber(String name) implements NumberInWords {
 
-    private static final Map<Integer, String> valueToNames = Map.ofEntries(
-            Map.entry(0, "zero"),
-            Map.entry(1, "un"),
-            Map.entry(2, "deux"),
-            Map.entry(3, "trois"),
-            Map.entry(4, "quatre"),
-            Map.entry(5, "cinq"),
-            Map.entry(6, "six"),
-            Map.entry(7, "sept"),
-            Map.entry(8, "huit"),
-            Map.entry(9, "neuf"),
-            Map.entry(10, "dix"),
-            Map.entry(11, "onze"),
-            Map.entry(12, "douze"),
-            Map.entry(13, "treize"),
-            Map.entry(14, "quatorze"),
-            Map.entry(15, "quinze"),
-            Map.entry(16, "seize"),
-            Map.entry(20, "vingt")
+    private static final Map<Integer, NamedNumber> valueToNamedNumber = Map.ofEntries(
+            entry(0, "zero"),
+            entry(1, "un"),
+            entry(2, "deux"),
+            entry(3, "trois"),
+            entry(4, "quatre"),
+            entry(5, "cinq"),
+            entry(6, "six"),
+            entry(7, "sept"),
+            entry(8, "huit"),
+            entry(9, "neuf"),
+            entry(10, "dix"),
+            entry(11, "onze"),
+            entry(12, "douze"),
+            entry(13, "treize"),
+            entry(14, "quatorze"),
+            entry(15, "quinze"),
+            entry(16, "seize"),
+            entry(20, "vingt")
     );
+
+    public static NamedNumber of(int value) {
+        return valueToNamedNumber.get(value);
+    }
 
     @Override
     public String inWords() {
-        return valueToNames.get(value);
+        return name;
+    }
+
+    private static Map.Entry<Integer, NamedNumber> entry(int value, String name) {
+        return Map.entry(value, new NamedNumber(name));
     }
 }

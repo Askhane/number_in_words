@@ -2,15 +2,17 @@ package fr.arolla.kata.numberinwords;
 
 public class NumberFactory {
     public static NumberInWords buildNumber(int value) {
-        if (value >= 17 && value <= 19) {
+        NamedNumber namedNumber = NamedNumber.of(value);
+        if (namedNumber == null) {
             return buildCompoundNumber(value);
         }
-        return new NamedNumber(value);
+        return namedNumber;
     }
 
     private static CompoundNamedNumber buildCompoundNumber(int number) {
         int unitDigit = getUnitDigit(number);
-        return new CompoundNamedNumber(buildNumber(10), buildNumber(unitDigit));
+        int tens = number - unitDigit;
+        return new CompoundNamedNumber(buildNumber(tens), buildNumber(unitDigit));
     }
 
     private static int getUnitDigit(int value) {
