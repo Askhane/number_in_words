@@ -1,6 +1,7 @@
 package fr.arolla.kata.numberinwords;
 
-public record CompoundNumber(Number leftNumber, Number rightNumber) implements Number {
+public record CompoundNamedNumber(NumberInWords leftNumber,
+                                  NumberInWords rightNumber) implements NumberInWords {
 
     @Override
     public String inWords() {

@@ -1,28 +1,32 @@
 package fr.arolla.kata.numberinwords;
 
-public record NamedNumber(int value) implements Number {
+import java.util.Map;
+
+public record NamedNumber(int value) implements NumberInWords {
+
+    private static final Map<Integer, String> valueToNames = Map.ofEntries(
+            Map.entry(0, "zero"),
+            Map.entry(1, "un"),
+            Map.entry(2, "deux"),
+            Map.entry(3, "trois"),
+            Map.entry(4, "quatre"),
+            Map.entry(5, "cinq"),
+            Map.entry(6, "six"),
+            Map.entry(7, "sept"),
+            Map.entry(8, "huit"),
+            Map.entry(9, "neuf"),
+            Map.entry(10, "dix"),
+            Map.entry(11, "onze"),
+            Map.entry(12, "douze"),
+            Map.entry(13, "treize"),
+            Map.entry(14, "quatorze"),
+            Map.entry(15, "quinze"),
+            Map.entry(16, "seize"),
+            Map.entry(20, "vingt")
+    );
+
     @Override
     public String inWords() {
-        return switch (value) {
-            case 0 -> "zero";
-            case 1 -> "un";
-            case 2 -> "deux";
-            case 3 -> "trois";
-            case 4 -> "quatre";
-            case 5 -> "cinq";
-            case 6 -> "six";
-            case 7 -> "sept";
-            case 8 -> "huit";
-            case 9 -> "neuf";
-            case 10 -> "dix";
-            case 11 -> "onze";
-            case 12 -> "douze";
-            case 13 -> "treize";
-            case 14 -> "quatorze";
-            case 15 -> "quinze";
-            case 16 -> "seize";
-            case 20 -> "vingt";
-            default -> null;
-        };
+        return valueToNames.get(value);
     }
 }

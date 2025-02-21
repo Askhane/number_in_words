@@ -21,7 +21,7 @@ public class NumberInWordsTest {
             "9,neuf"})
     @ParameterizedTest
     void shouldReturnDigitNameForOneDigitNumbers(int oneDigitNumber, String digitName) {
-        assertThat(Number.inWords(oneDigitNumber)).isEqualTo(digitName);
+        assertThat(NumberInWords.of(oneDigitNumber)).isEqualTo(digitName);
     }
 
     @CsvSource({
@@ -35,7 +35,7 @@ public class NumberInWordsTest {
     })
     @ParameterizedTest
     void shouldReturnNumberNameForNamedNumbersFrom10To16(int namedNumber, String numberName) {
-        assertThat(Number.inWords(namedNumber)).isEqualTo(numberName);
+        assertThat(NumberInWords.of(namedNumber)).isEqualTo(numberName);
     }
 
     @CsvSource({
@@ -45,12 +45,12 @@ public class NumberInWordsTest {
     })
     @ParameterizedTest
     void shouldReturnCompoundNameForNumbersFrom17to19(int number, String compoundName) {
-        assertThat(Number.inWords(number)).isEqualTo(compoundName);
+        assertThat(NumberInWords.of(number)).isEqualTo(compoundName);
     }
 
     @Test
     void shouldReturnNumberNameForTens() {
-        assertThat(Number.inWords(20)).isEqualTo("vingt");
+        assertThat(NumberInWords.of(20)).isEqualTo("vingt");
     }
 
 }

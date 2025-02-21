@@ -1,16 +1,16 @@
 package fr.arolla.kata.numberinwords;
 
 public class NumberFactory {
-    public static Number createNumber(int number) {
-        if (number >= 17 && number <= 19) {
-            return buildCompoundNumber(number);
+    public static NumberInWords buildNumber(int value) {
+        if (value >= 17 && value <= 19) {
+            return buildCompoundNumber(value);
         }
-        return new NamedNumber(number);
+        return new NamedNumber(value);
     }
 
-    private static CompoundNumber buildCompoundNumber(int number) {
+    private static CompoundNamedNumber buildCompoundNumber(int number) {
         int unitDigit = getUnitDigit(number);
-        return new CompoundNumber(createNumber(10), createNumber(unitDigit));
+        return new CompoundNamedNumber(buildNumber(10), buildNumber(unitDigit));
     }
 
     private static int getUnitDigit(int value) {
